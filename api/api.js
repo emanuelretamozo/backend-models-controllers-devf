@@ -1,5 +1,6 @@
 import express from 'express';
 import bookRoutes from './routes/bookRoutes.js';
+import clientRoutes from './routes/clientRoutes.js';
 
 const api = express();
 
@@ -15,5 +16,6 @@ api.get('/status', (req, res) => {
 
 //TODO: Acá se registran las rutas
 api.use(bookRoutes);
+api.use(clientRoutes);
 
 export default api;

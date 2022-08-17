@@ -1,11 +1,5 @@
 import mongoose from 'mongoose';
 
-/**
- * Cosas necesarias para crear un modelo
- * 1.- schema
- * 2.- nombre
- */
-
 const schema = new mongoose.Schema({
   author: {
     type: String,
