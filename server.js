@@ -2,6 +2,7 @@ import http from 'http';
 import api from './api/api.js';
 import database from './api/config/database.js';
 
+
 const port = 3000;
 const server = http.createServer(api);
 
