@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import config from './index.js'
 
 const db = mongoose.connection;
 
@@ -15,9 +16,7 @@ db.on('error', () => {
 });
 
 export default () => {
-  mongoose.connect('mongodb://127.0.0.1:27017/library');
+  mongoose.connect(config.database.uri, { useNewUrlParser: true });
 };
 
 
-//http://127.0.0.1:27017/library
-//mongodb://127.0.0.1:27017
