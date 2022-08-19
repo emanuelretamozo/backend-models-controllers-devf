@@ -1,5 +1,7 @@
 import bcrypt from 'bcryptjs';
+import jwt from 'jwt-simple';
 import User from '../models/User.js';
+import config from '../config/index.js';
 
 const register = async (req, res) => {
     try {
@@ -45,6 +47,27 @@ const login = async (req, res) => {
             });
         }
     // TODO: Generar token y devolverlo 
+
+
+    const expirationDate = new Date(payload.expirationDate);
+    if (payload.expirationDate < new Date()) {
+        return res.status(401).json({
+            msg: 'Token expirado',
+        });
+    }
+
+    const payload = {
+        userId: user.id,
+        expirationDate
+    };
+
+    const token = jwt.encode(payload, config.jwt.secret);
+
+    return res.status(200).json({
+        message: 'Usuario logeado correctamente',
+        data: { token },
+    });
+
     } catch (error) {
         return res.status(500).json({
             msg: "Error al logear usuario",

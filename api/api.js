@@ -2,6 +2,7 @@ import express from 'express';
 import bookRoutes from './routes/bookRoutes.js';
 import clientRoutes from './routes/clientRoutes.js';
 import authRoutes from './routes/authRoutes.js';
+import isAuth from './middlewares/authValidator.js';
 
 const api = express();
 
